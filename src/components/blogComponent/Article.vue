@@ -9,10 +9,8 @@ const props = defineProps({
 })
 
 const isModalOpen = ref(false)
-// const modaltext = ref('')
 
-function openModal(item) {
-    // modaltext.value = text;
+function openModal(){
     isModalOpen.value = true;
 }
 </script>
@@ -21,6 +19,7 @@ function openModal(item) {
     <article class="item" >
         <div class="card-content">
             <h2>{{ post.title }}</h2>
+            <!-- <p>{{ post.body.substr(0, 100) }}...</p> -->
             <p>{{ post.body.split(" ").slice(0, 20).join(" ") }}...</p>
         </div>
         <div class="card-footer">
@@ -48,7 +47,6 @@ function openModal(item) {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -56,6 +54,7 @@ function openModal(item) {
     border: 1px solid #f1f5f9;
     max-width: 400px;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item:hover {
@@ -96,6 +95,7 @@ p {
     border: none;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
 }
 
 .view {
@@ -132,4 +132,14 @@ p {
     gap: 15px;
 }
 
+.modal-content > button{
+    cursor: pointer;
+    width: 50%;
+    margin: auto;
+    border-radius: 8px;
+    color: white;
+    background-color: #3b82f6;
+    border: 1px solid gray;
+    padding: 0.3rem;
+}
 </style>

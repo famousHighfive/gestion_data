@@ -1,9 +1,13 @@
+import { createRouter, createWebHistory } from 'vue-router'
 import Accueil from '@/views/Accueil.vue'
 import APropos from '@/views/APropos.vue'
+import Article from '@/views/Article.vue'
 import Blog from '@/views/Blog.vue'
 import Contact from '@/views/Contact.vue'
+import DetailArticle from '@/views/DetailArticle.vue'
+import NotFound from '@/views/NotFound.vue'
 import Services from '@/views/Services.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import Test from '@/views/Test.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,18 +33,28 @@ const router = createRouter({
       component: Blog,
     },
     {
-      path: '/contact',
+      path: '/contact/',
       name: 'contact',
       component: Contact,
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue'),
-    // },
+    {
+      path: '/article/',
+      name: 'article',
+      component: Article,
+    },
+    {
+      path: '/detail-article/:id',
+      name: 'detail-article',
+      component: DetailArticle,
+    },
+    {
+      path: '/test/',
+      name: 'test',
+      component: Test,
+    },
+    { path: '/:pathMatch(.*)*',
+      component: NotFound 
+    }
   ],
 })
 

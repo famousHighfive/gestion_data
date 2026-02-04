@@ -28,6 +28,10 @@
                     Contact
                 </router-link>
             </li>
+            <li><router-link to="/article">
+                    Article
+                </router-link>
+            </li>
         </ul>
     </nav>
 
@@ -36,11 +40,14 @@
 
 <style scoped>
 .header {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
+     background-color: #0f172a;
     padding-block: 1rem;
+    z-index: 2;
 }
 
 ul {
@@ -50,8 +57,8 @@ ul {
 }
 
 li a{
+    color: white;
     text-decoration: none;
     font-size: 1.2rem;
-    color: black;
 }
 </style>
