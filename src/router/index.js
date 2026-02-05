@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Accueil from '@/views/Accueil.vue'
 import APropos from '@/views/APropos.vue'
-import Article from '@/views/Article.vue'
 import Blog from '@/views/Blog.vue'
 import Contact from '@/views/Contact.vue'
 import DetailArticle from '@/views/DetailArticle.vue'
 import NotFound from '@/views/NotFound.vue'
 import Services from '@/views/Services.vue'
 import Test from '@/views/Test.vue'
+import DetailBlog from '@/views/DetailBlog.vue'
+import ItemArticle from '@/views/ItemArticle.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,16 @@ const router = createRouter({
       component: Blog,
     },
     {
+      path: '/blog-detail/:id',
+      name: 'myBlog',
+      component: DetailBlog,
+    },
+    // {
+    //   path: '/blog-detail/:id',
+    //   name: 'blog-detail',
+    //   component: DetailBlog,
+    // },
+    {
       path: '/contact/',
       name: 'contact',
       component: Contact,
@@ -40,7 +51,7 @@ const router = createRouter({
     {
       path: '/article/',
       name: 'article',
-      component: Article,
+      component: ItemArticle,
     },
     {
       path: '/detail-article/:id',

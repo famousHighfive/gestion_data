@@ -17,7 +17,8 @@ async function getData(){
     }
     data.value = await res.json()
     data.value = data.value.posts
-    console.log(data.value);
+      
+    localStorage.setItem('myDatas', JSON.stringify(data.value))
     
   } catch (err) {
     error.value = err.message
@@ -145,7 +146,6 @@ button {
   color: #2d3436;
 }
 
-/* Grille de Features */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -201,4 +201,5 @@ h3 {
     max-width: 300px;
   }
 }
+
 </style>
