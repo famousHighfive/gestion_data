@@ -1,36 +1,42 @@
 <script setup>
-import { articles } from '@/data/produits';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute()
 const router = useRouter()
+const data = JSON.parse(localStorage.getItem('myDatas'))
 
-const userInfo = articles.find(user => user.id === Number(route.params.id))
+// recuperation de lid 
+const currentId = route.params.id;
 
-const goArticle = () => {
-    router.push('/article')
+// trouver lobjet 
+let article = data.find(item => item.id === Number(currentId))
+
+const goBlog = () => {
+    router.push('/blog')
 }
+
+
 </script>
 
 
 <template>
   <div class="detail-wrapper">
-    <article v-if="articles" class="detail-card">
+    <article v-if="article" class="detail-card">
       <header class="detail-header">
-        <button class="back-btn" @click="goArticle">
+        <button class="back-btn" @click="goBlog">
           <span class="icon">←</span> Retour au blog
         </button>
-        <h1 class="title">{{ userInfo.title }}</h1>
-        <div class="meta">• Author: {{ userInfo.author }}</div>
+        <h1 class="title">{{ article.title }}</h1>
+        <div class="meta">Likes: {{ article.reactions.likes }} • Dislike: {{ article.reactions.dislikes }}</div>
       </header>
 
       <section class="content">
-        <p>{{ userInfo.content }}</p>
+        <p>{{ article.body }}</p>
       </section>
 
       <footer class="detail-footer">
         <div class="tags">
-          <span> Created at: {{ userInfo.createdAt }}</span>
+          <span v-for="tag in article.tags" :key="tag">{{ tag }}</span>
         </div>
       </footer>
     </article>

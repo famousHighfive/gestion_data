@@ -22,13 +22,21 @@ function openModal(){
             <!-- <p>{{ post.body.substr(0, 100) }}...</p> -->
             <p>{{ post.body.split(" ").slice(0, 20).join(" ") }}...</p>
         </div>
-        <div class="card-footer">
-            <div>
-                <p class="view">Vu par : {{ post.views }}</p>
-            <p>Likes: {{ post.reactions.likes }} - Dislikes: {{ post.reactions.dislikes }}</p>
-            </div>
-            <button @click="openModal">Read More</button>
-        </div>
+<div class="card-footer">
+  <div>
+    <p class="view">Vu par : {{ post.views }}</p>
+    <p>Likes: {{ post.reactions.likes }}</p>
+  </div>
+  
+  <!-- Nouveau conteneur pour l'alignement -->
+  <div class="footer-actions">
+    <button class="btn-secondary" @click="openModal">Aperçu</button>
+    <button class="btn-primary">
+      <router-link :to="{name: 'myBlog', params: {id: post.id}}">Read More</router-link>
+      <!-- <router-link :to="`/blog-detail/${post.id}`">Read More</router-link> -->
+    </button>
+  </div>
+</div>
     </article>
     <!-- Modal -->
     <Teleport to="body">
@@ -83,19 +91,36 @@ p {
 }
 
 .card-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.25rem 1.5rem;
-    background-color: #f8fafc;
-    border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background-color: #f8fafc;
+  border-top: 1px solid #f1f5f9;
+  gap: 10px;
 }
 
-.card-footer > button{
-    background-color: #3b82f6;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
+.footer-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.card-footer button {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  color: #3b82f6;
+}
+
+/* Reset du style du lien interne */
+.card-footer button a {
+  color: #3b82f6;
+  text-decoration: none;
 }
 
 .view {
