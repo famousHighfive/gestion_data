@@ -33,6 +33,16 @@
                 </router-link>
             </li>
         </ul>
+        <ul>
+            <li><router-link to="/login">
+                    CONNEXION
+                </router-link>
+            </li>
+            <li><router-link to="/signup">
+                    INSCRIPTION
+                </router-link>
+            </li>
+        </ul>
     </nav>
 
 </template>
@@ -43,12 +53,12 @@
     position: sticky;
     top: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: #0f172a;
     padding-block: 1.5rem;
     z-index: 10;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 ul {
@@ -61,7 +71,7 @@ ul {
 
 li a {
     position: relative;
-    color: #94a3b8; 
+    color: #94a3b8;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
@@ -74,7 +84,7 @@ li a:hover {
 }
 
 .router-link-exact-active {
-    color: #ffffff ;
+    color: #ffffff;
 }
 
 .router-link-exact-active::after {

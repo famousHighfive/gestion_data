@@ -47,16 +47,40 @@ onMounted(() => {
     </header>
 
     <main>
-      <p v-if="loading">Chargement...</p>
-      <div v-else-if="error">Error: {{ error }}</div>
-      <div v-else class="article-container">
-        <Article v-for="post in data" :key="post.id" :post="post" />
+      <!-- <p v-if="loading">Chargement...</p> -->
+      <!-- <div v-else-if="error">Error: {{ error }}</div> -->
+      <!-- <div v-else class="article-content"> -->
+      <div class="article-content">
+        <div class="asidebar">
+          <ul>
+            <li><router-link to="/blog">Infos</router-link></li>
+            <li><router-link to="/blog/infos-benin">Infos Benin</router-link></li>
+            <li><router-link :to="{name: 'infos-inter'}">Infos international</router-link></li>
+          </ul>
+          <RouterView />
+        </div>
+        <div class="article-container"><Article v-for="post in data" :key="post.id" :post="post" /></div>
       </div>
     </main>
   </div>
 </template>
 
 <style scoped>
+.asidebar{
+  display: flex;
+}
+.asidebar > ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  cursor: pointer;
+}
+.asidebar
+.asidebar
+.article-content{
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
 .article-container{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
